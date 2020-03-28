@@ -12,6 +12,8 @@ export function formatQuestion(question, author, authedUser) {
     text2: optionTwo['text'],
     hasAnswered:
       optionOne['votes'].includes(authedUser) ||
-      optionTwo['votes'].includes(authedUser)
+      optionTwo['votes'].includes(authedUser),
+    voteOne: optionOne['votes'].includes(authedUser),
+    voteTwo: optionTwo['votes'].includes(authedUser)
   };
 }

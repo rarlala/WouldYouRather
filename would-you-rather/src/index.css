@@ -95,7 +95,7 @@ li {
 
 .question-box-right .title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .question-box-right .question-text {
@@ -118,4 +118,65 @@ li {
   background: green;
   color: #fff;
   transition: background 0.5s;
+}
+
+.question-box-right label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.answer-box {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-top: 16px;
+}
+
+.answer-box.active {
+  position: relative;
+  border: 1px solid forestgreen;
+  background: yellowgreen;
+}
+
+.answer-box.active .choice {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: -15px;
+  top: -20px;
+  border-radius: 45px;
+  background: gold;
+  text-align: center;
+}
+
+.answer-box.active .choice p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 3px 0;
+  color: #fff;
+}
+
+.question-text {
+  font-weight: 500;
+}
+
+.answer-box .total-bar {
+  width: 100%;
+  background: #aaa;
+  border-radius: 5px;
+  position: relative;
+}
+
+.percent {
+  background: green;
+  border-radius: 5px;
+  color: white;
+  text-align: right;
+}
+
+.vote-detail {
+  margin: 1px 0 15px 0;
+  text-align: center;
+  font-weight: 500;
 }

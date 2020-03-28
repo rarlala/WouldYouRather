@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
+import QuestionDetail from './QuestionDetail';
 
 class Question extends Component {
   render() {
@@ -10,7 +11,7 @@ class Question extends Component {
       return <p>No Question</p>;
     }
 
-    console.log('hey', this.props);
+    console.log('ho', this.props);
 
     const {
       name,
@@ -25,27 +26,36 @@ class Question extends Component {
 
     return (
       <div>
-        <div className="question">
-          <p className="author">{name} asks:</p>
-          <div className="question-box">
-            <div className="question-box-left">
-              <img
-                src={avatarURL}
-                alt={`Avatar of ${name}`}
-                className="avatar"
-              />
-            </div>
-            <div className="question-box-right">
-              <p className="title">Would you rather</p>
-              <p className="question-text">
-                {text1} <strong>OR</strong> {text2}
-              </p>
-              <button type="submit" className="view-poll">
-                View Poll
-              </button>
+        <div>
+          <div className="question">
+            <p className="author">{name} asks:</p>
+            <div className="question-box">
+              <div className="question-box-left">
+                <img
+                  src={avatarURL}
+                  alt={`Avatar of ${name}`}
+                  className="avatar"
+                />
+              </div>
+              <div className="question-box-right">
+                <p className="title">Would you rather</p>
+                <p className="question-text">
+                  {text1} <strong>OR</strong> {text2}
+                </p>
+                {hasAnswered ? (
+                  <button type="submit" className="view-poll">
+                    Answer
+                  </button>
+                ) : (
+                  <button type="submit" className="view-poll">
+                    View Poll
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
+        <QuestionDetail id={id} />
       </div>
     );
   }

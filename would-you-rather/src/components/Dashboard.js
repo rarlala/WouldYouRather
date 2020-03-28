@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
+import QuestionDetail from './QuestionDetail';
 
 class Dashboard extends Component {
   render() {
     return (
-      <div>
-        <h3 className="center"></h3>
+      <div className="dashboard">
         <ul className="dashboard-list">
           {this.props.questionsIds.map(id => (
             <li key={id}>
               <Question id={id} />
-              {/* <div>Questions Id: {id}</div> */}
             </li>
           ))}
         </ul>
