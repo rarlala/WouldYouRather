@@ -40,7 +40,9 @@ class Question extends Component {
               <p className="question-text">
                 {text1} <strong>OR</strong> {text2}
               </p>
-              <button type="submit" className="view-poll">View Poll</button>
+              <button type="submit" className="view-poll">
+                View Poll
+              </button>
             </div>
           </div>
         </div>

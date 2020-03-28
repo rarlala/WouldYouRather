@@ -26,6 +26,34 @@ li {
   padding: 10px;
 }
 
+.dashboard {
+  max-width: 650px;
+  margin: 15px auto 0;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+}
+
+/* Tab */
+
+.dashboard .menu {
+  width: inherit;
+  border-bottom: 1px solid gainsboro;
+}
+
+.dashboard .menu a {
+  display: inline-block;
+  width: 325px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.dashboard .menu a.active {
+  color: green;
+  background: gainsboro;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+}
+
 /* question */
 .question {
   width: 100%;
