@@ -26,7 +26,7 @@ li {
   padding: 10px;
 }
 
-.dashboard {
+.content {
   max-width: 650px;
   margin: 15px auto 0;
   border: 1px solid gainsboro;
@@ -35,19 +35,19 @@ li {
 
 /* Tab */
 
-.dashboard .menu {
+.content .menu {
   width: inherit;
   border-bottom: 1px solid gainsboro;
 }
 
-.dashboard .menu a {
+.content .menu a {
   display: inline-block;
   width: 325px;
   text-align: center;
   padding: 10px 0;
 }
 
-.dashboard .menu a.active {
+.content .menu a.active {
   color: green;
   background: gainsboro;
   border-radius: 10px 10px 0 0;
@@ -104,7 +104,8 @@ li {
   text-overflow: ellipsis;
 }
 
-.question-box-right .view-poll {
+.question-box-right .view-poll,
+.button {
   width: 100%;
   background: none;
   padding: 5px 0;
@@ -114,7 +115,8 @@ li {
   cursor: pointer;
 }
 
-.question-box-right .view-poll:hover {
+.question-box-right .view-poll:hover,
+.button:hover {
   background: green;
   color: #fff;
   transition: background 0.5s;
@@ -179,4 +181,64 @@ li {
   margin: 1px 0 15px 0;
   text-align: center;
   font-weight: 500;
+}
+
+/* New Question */
+
+.NewQuestion h2 {
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid gainsboro;
+}
+
+.NewQuestion-box {
+  padding: 10px;
+}
+
+.NewQuestion-form input {
+  width: 99%;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 8px 0 8px 5px;
+}
+
+.NewQuestion-form .or {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  margin: 8px 0px;
+  font-weight: bold;
+}
+
+.NewQuestion-form .or::before,
+.NewQuestion-form .or::after {
+  content: '';
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0 5px;
+}
+
+.button {
+}
+
+.button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 5px 0;
+  background: green;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: green;
+  background: none;
+  border: 1px solid green;
+  transition: background 0.5s;
 }
