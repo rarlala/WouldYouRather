@@ -7,6 +7,7 @@ import NewQuestion from './NewQuestion';
 import LeaderBoard from './LeaderBoard';
 import Nav from './Nav';
 import QuestionDetail from './QuestionDetail';
+import { LoadingBar } from 'react-redux-loading';
 
 class App extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <LoadingBar />
           <div className="container">
             <Nav />
             {this.props.loading === true ? null : (
