@@ -331,3 +331,8 @@ li {
   border-radius: 15px;
   color: #fff;
 }
+
+/* question-detail */
+.question-detail {
+  margin-top: 15px;
+}

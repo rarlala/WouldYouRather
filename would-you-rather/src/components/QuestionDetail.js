@@ -10,8 +10,6 @@ class QuestionDetail extends Component {
       return <p>No Question</p>;
     }
 
-    console.log('hey', this.props);
-
     const {
       name,
       id,
@@ -33,7 +31,7 @@ class QuestionDetail extends Component {
     const two_percent = 100 * (two_vote / total_vote);
 
     return (
-      <div>
+      <div className="question-detail">
         <div className="question">
           <p className="author">{name} asks:</p>
           <div className="question-box">
@@ -116,10 +114,12 @@ class QuestionDetail extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps({ authedUser, users, questions }, props) {
+  const { id } = props.match.params;
   const question = questions[id];
+
   return {
-    authedUser,
+    id,
     question: formatQuestion(question, users[question.author], authedUser)
   };
 }
