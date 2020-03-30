@@ -1,10 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
+import { handleSaveAnswer } from '../actions/questions';
+import { Redirect } from 'react-router-dom';
 
 class QuestionDetail extends Component {
+  state = {
+    answer: '',
+    // toResult: false,
+    toHome: false
+  };
+
+  handleClick = e => {
+    this.setState({
+      answer: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log('submit complete');
+
+    const { answer } = this.state;
+    const { dispatch, id } = this.props;
+
+    dispatch(handleSaveAnswer(id, answer));
+
+    this.setState(() => ({
+      // toResult: true
+      toHome: true
+    }));
+  };
+
   render() {
-    const { question } = this.props;
+    const { question, toHome, answer } = this.props;
+
+    if (toHome === true) {
+      return <Redirect to="/" />;
+    }
 
     if (question === null) {
       return <p>No Question</p>;
@@ -27,8 +60,8 @@ class QuestionDetail extends Component {
     const two_vote = optionTwo.votes.length;
     const total_vote = one_vote + two_vote;
 
-    const one_percent = 100 * (one_vote / total_vote);
-    const two_percent = 100 * (two_vote / total_vote);
+    const one_percent = (100 * (one_vote / total_vote)).toFixed(2);
+    const two_percent = (100 * (two_vote / total_vote)).toFixed(2);
 
     return (
       <div className="question-detail">
@@ -92,16 +125,30 @@ class QuestionDetail extends Component {
             ) : (
               <div className="question-box-right">
                 <p className="title">Would you rather</p>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                   <label>
-                    <input type="radio" name="radioGroup" value="one" />
+                    <input
+                      type="radio"
+                      name="poll"
+                      value="optionOne"
+                      onChange={this.handleClick}
+                    />
                     {optionOne.text}
                   </label>
                   <label>
-                    <input type="radio" name="radioGroup" value="two" />
+                    <input
+                      type="radio"
+                      name="poll"
+                      value="optionTwo"
+                      onChange={this.handleClick}
+                    />
                     {optionTwo.text}
                   </label>
-                  <button type="submit" className="view-poll">
+                  <button
+                    type="submit"
+                    className="view-poll"
+                    disabled={answer === ''}
+                  >
                     Poll
                   </button>
                 </form>
@@ -120,6 +167,7 @@ function mapStateToProps({ authedUser, users, questions }, props) {
 
   return {
     id,
+    authedUser,
     question: formatQuestion(question, users[question.author], authedUser)
   };
 }
