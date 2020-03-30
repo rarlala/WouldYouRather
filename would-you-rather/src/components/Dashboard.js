@@ -6,8 +6,8 @@ import QuestionDetail from './QuestionDetail';
 class Dashboard extends Component {
   render() {
     return (
-      <div className="dashboard">
-        <ul className="dashboard-list">
+      <div className="content">
+        <ul>
           {this.props.questionsIds.map(id => (
             <li key={id}>
               <Question id={id} />
