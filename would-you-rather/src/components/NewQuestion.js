@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
-import questions from '../reducers/questions';
+import { Redirect } from 'react-router-dom';
 
 class NewQuestion extends Component {
   state = {
     optionOneText: '',
-    optionTwoText: ''
+    optionTwoText: '',
+    toHome: false
   };
 
   handleChange_one = e => {
@@ -32,12 +33,17 @@ class NewQuestion extends Component {
 
     this.setState(() => ({
       optionOneText: '',
-      optionTwoText: ''
+      optionTwoText: '',
+      toHome: id ? false : true
     }));
   };
 
   render() {
-    const { optionOneText, optionTwoText } = this.state;
+    const { optionOneText, optionTwoText, toHome } = this.state;
+
+    if (toHome === true) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <div className="content">
