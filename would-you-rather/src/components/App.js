@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialDate } from '../actions/shared';
-import Dashboard from './Dashboard';
-import NewQuestion from './NewQuestion';
+import LeaderBoard from './LeaderBoard';
 
 class App extends Component {
   componentDidMount() {
@@ -13,7 +12,9 @@ class App extends Component {
     return (
       <div className="container">
         {/* {this.props.loading === true ? null : <Dashboard />} */}
-        {this.props.loading === true ? null : <NewQuestion />}
+        {this.props.loading === true ? null : (
+          <LeaderBoard />
+        )}
       </div>
     );
   }

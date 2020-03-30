@@ -55,7 +55,8 @@ li {
 }
 
 /* question */
-.question {
+.question,
+.leaderBoard-list {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -83,7 +84,8 @@ li {
   border-right: 1px solid gainsboro;
 }
 
-.question-box-left img {
+.question-box-left img,
+.leaderBoard-list img {
   width: 120px;
   margin: auto;
 }
@@ -241,4 +243,59 @@ li {
   background: none;
   border: 1px solid green;
   transition: background 0.5s;
+}
+
+/* leaderBoard */
+
+.leaderBoard-list {
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.leaderBoard-box-left {
+  width: 25%;
+  border-right: 1px solid #ccc;
+}
+
+.leaderBoard-box-center {
+  width: 50%;
+  border-right: 1px solid #ccc;
+  padding: 0 10px;
+}
+
+.leaderBoard-box-center p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leaderBoard-box-center hr {
+  border-bottom: 1px solid #ccc;
+}
+
+.leaderBoard-box-right {
+  width: 25%;
+  height: inherit;
+  margin: 0 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.leaderBoard-box-right .score {
+  border-bottom: 1px solid #ccc;
+  height: 20%;
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+
+.leaderBoard-box-right .score-text {
+  background: green;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 2rem;
+  margin: 0 auto;
 }
