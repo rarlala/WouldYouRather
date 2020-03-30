@@ -299,13 +299,35 @@ li {
 
 /* Nav */
 
+.nav {
+  border-bottom: 3px solid forestgreen;
+}
+
 .nav ul {
+  height: inherit;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
 }
 
+.nav li {
+  height: inherit;
+}
+
 .nav li:first-child {
   padding-left: 0;
+}
+
+.nav li a {
+  padding: 10px;
+}
+
+.nav li .active,
+.nav li a:hover {
+  background: forestgreen;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  color: #fff;
 }

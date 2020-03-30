@@ -6,7 +6,7 @@ import Dashboard from './Dashboard';
 import NewQuestion from './NewQuestion';
 import LeaderBoard from './LeaderBoard';
 import Nav from './Nav';
-import LoadingBar from 'react-redux-loading';
+import QuestionDetail from './QuestionDetail';
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +23,7 @@ class App extends Component {
               <div>
                 <Route path="/" exact component={Dashboard} />
                 <Route path="/new" exact component={NewQuestion} />
+                <Route path="/question/:id" exact component={QuestionDetail} />
                 <Route path="/leaderBoard" exact component={LeaderBoard} />
               </div>
             )}
