@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveAnswer } from '../actions/questions';
-import { Redirect } from 'react-router-dom';
 
 class QuestionDetail extends Component {
   state = {
-    answer: '',
-    // toResult: false,
-    toHome: false
+    answer: ''
   };
 
   handleClick = e => {
@@ -25,19 +22,10 @@ class QuestionDetail extends Component {
     const { dispatch, id } = this.props;
 
     dispatch(handleSaveAnswer(id, answer));
-
-    this.setState(() => ({
-      // toResult: true
-      toHome: true
-    }));
   };
 
   render() {
-    const { question, toHome, answer } = this.props;
-
-    if (toHome === true) {
-      return <Redirect to="/" />;
-    }
+    const { question, answer } = this.props;
 
     if (question === null) {
       return <p>No Question</p>;
@@ -45,7 +33,6 @@ class QuestionDetail extends Component {
 
     const {
       name,
-      id,
       avatarURL,
       optionOne,
       optionTwo,
@@ -78,7 +65,7 @@ class QuestionDetail extends Component {
             {hasAnswered ? (
               <div className="question-box-right">
                 <p className="title">Results</p>
-                <div className={'answer-box' + ' ' + (voteOne ? 'active' : '')}>
+                <div className={'answer-box ' + (voteOne ? 'active' : '')}>
                   {voteOne ? (
                     <div className="choice">
                       <p>your choice</p>
@@ -100,7 +87,7 @@ class QuestionDetail extends Component {
                   </p>
                 </div>
 
-                <div className={'answer-box' + ' ' + (voteTwo ? 'active' : '')}>
+                <div className={'answer-box ' + (voteTwo ? 'active' : '')}>
                   {voteTwo ? (
                     <div className="choice">
                       <p>your choice</p>

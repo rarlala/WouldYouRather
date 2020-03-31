@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
-import QuestionDetail from './QuestionDetail';
 import { Link } from 'react-router-dom';
 
 class Question extends Component {
@@ -41,7 +40,6 @@ class Question extends Component {
             )}
           </div>
         </div>
-        {/* <QuestionDetail id={id} /> */}
       </div>
     );
   }
