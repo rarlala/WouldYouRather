@@ -26,7 +26,7 @@ class Dashboard extends Component {
         menuItem: 'Answered Questions',
         render: () => (
           <Tab.Pane attached={false}>
-            {this.props.unAnsweredList.length === 0 ? (
+            {this.props.answeredList.length === 0 ? (
               <li key="1">No Answered Questions :)</li>
             ) : (
               this.props.answeredList.map(id => (
