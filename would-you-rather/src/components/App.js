@@ -9,6 +9,7 @@ import Nav from './Nav';
 import QuestionDetail from './QuestionDetail';
 import { LoadingBar } from 'react-redux-loading';
 import Login from './Login';
+import Logout from './Logout';
 
 class App extends Component {
   componentDidMount() {
@@ -31,6 +32,7 @@ class App extends Component {
                 <Route path="/question/:id" component={QuestionDetail} />
                 <Route path="/leaderBoard" component={LeaderBoard} />
                 <Route path="/login" component={Login} />
+                <Route path="/logout" component={Logout} />
               </div>
             )}
           </div>
