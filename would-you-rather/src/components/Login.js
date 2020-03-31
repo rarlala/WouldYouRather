@@ -4,7 +4,40 @@ import { Redirect } from 'react-router-dom';
 import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
+  state = {
+    authedUser: '',
+    toHome: false
+  };
+
+  handleChange = e => {
+    this.setState({
+      authedUser: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log('submit complete');
+
+    const { authedUser } = this.state;
+    const { dispatch } = this.props;
+
+    dispatch(setAuthedUser(authedUser));
+
+    this.setState(() => ({
+      toHome: true
+    }));
+  };
+
   render() {
+    const { toHome, authedUser } = this.state;
+
+    if (authedUser !== 'null') {
+      if (toHome === true) {
+        return <Redirect to="/" />;
+      }
+    }
+
     return (
       <div className="content">
         <div className="sign-in-box-top">
