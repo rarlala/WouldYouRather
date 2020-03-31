@@ -25,10 +25,25 @@ class Question extends Component {
             <p className="question-text">
               {text1} <strong>OR</strong> {text2}
             </p>
+
             {hasAnswered ? (
-              <Link to={`/question/${id}`}>
+              this.props.authedUser === 'null' ? (
+                <Link to="/login">
+                  <button type="submit" className="view-poll">
+                    Answer
+                  </button>
+                </Link>
+              ) : (
+                <Link to={`/question/${id}`}>
+                  <button type="submit" className="view-poll">
+                    Answer
+                  </button>
+                </Link>
+              )
+            ) : this.props.authedUser === 'null' ? (
+              <Link to="/login">
                 <button type="submit" className="view-poll">
-                  Answer
+                  View Poll
                 </button>
               </Link>
             ) : (
