@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveAnswer } from '../actions/questions';
+import { handleSaveAnswerUser } from '../actions/users';
 
 class QuestionDetail extends Component {
   state = {
@@ -22,6 +23,7 @@ class QuestionDetail extends Component {
     const { dispatch, id } = this.props;
 
     dispatch(handleSaveAnswer(id, answer));
+    dispatch(handleSaveAnswerUser(id, answer));
   };
 
   render() {
