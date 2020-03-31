@@ -5,7 +5,7 @@ import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
   state = {
-    authedUser: '',
+    authedUser: 'sarahedo',
     toHome: false
   };
 
