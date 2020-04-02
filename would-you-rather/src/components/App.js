@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleAuthedUser, handleInitialDate } from '../actions/shared';
 import Dashboard from './Dashboard';
@@ -11,6 +11,7 @@ import { LoadingBar } from 'react-redux-loading';
 import Login from './Login';
 import Logout from './Logout';
 import PageNotFound from './PageNotFound';
+import ProtectedRoute from './ProtectedRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -25,12 +26,17 @@ class App extends Component {
           <LoadingBar />
           <div className="container">
             <Nav />
+            {console.log('authedUser:', this.props.authedUser)}
+            {console.log('authedUser null:', this.props.authedUser === 'null')}
             {this.props.loading === true ? null : (
               <Switch>
-<Route path="/" exact component={Dashboard} />
-                <Route path="/new" component={NewQuestion} />
-                <Route path="/question/:id" component={QuestionDetail} />
-                <Route path="/leaderBoard" component={LeaderBoard} />                
+                <ProtectedRoute path="/" exact component={Dashboard} />
+                <ProtectedRoute path="/new" component={NewQuestion} />
+                <ProtectedRoute
+                  path="/question/:id"
+                  component={QuestionDetail}
+                />
+                <ProtectedRoute path="/leaderBoard" component={LeaderBoard} />
                 <Route path="/login" component={Login} />
                 <Route path="/logout" component={Logout} />
                 <Route path="*" component={PageNotFound} />
@@ -45,7 +51,8 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser
   };
 }
 

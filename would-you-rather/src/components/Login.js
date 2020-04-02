@@ -9,6 +9,10 @@ class Login extends Component {
     toHome: false
   };
 
+  goBack = () => {
+    this.props.history.goBack();
+  };
+
   handleChange = e => {
     this.setState({
       authedUser: e.target.value
@@ -29,13 +33,19 @@ class Login extends Component {
     }));
   };
 
-  render() {
+  render(path) {
+    console.log('a', this.props.history);
     const { toHome, authedUser } = this.state;
+    console.log('login으로 넘어옴', this.props);
+    console.log('login으로 넘어옴', path);
 
     if (authedUser !== 'null') {
+      // console.log('login으로 넘어옴', this.props.history.go);
+      // if(this.props.history === )
       if (toHome === true) {
         return <Redirect to="/" />;
       }
+      // this.goBack();
     }
 
     return (
