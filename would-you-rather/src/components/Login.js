@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends Component {
   state = {
     authedUser: 'sarahedo',
-    toHome: false
-  };
-
-  goBack = () => {
-    this.props.history.goBack();
+    toHome: false,
+    back: null
   };
 
   handleChange = e => {
@@ -28,24 +25,27 @@ class Login extends Component {
 
     dispatch(setAuthedUser(authedUser));
 
+    if (this.props.history.goBack !== null) {
+      this.setState(() => ({
+        back: true
+      }));
+    }
+
     this.setState(() => ({
       toHome: true
     }));
   };
 
   render(path) {
-    console.log('a', this.props.history);
-    const { toHome, authedUser } = this.state;
-    console.log('login으로 넘어옴', this.props);
-    console.log('login으로 넘어옴', path);
-
+    const { toHome, authedUser, back } = this.state;
+    const { history } = this.props;
     if (authedUser !== 'null') {
-      // console.log('login으로 넘어옴', this.props.history.go);
-      // if(this.props.history === )
+      if (back === true) {
+        this.props.history.goBack();
+      }
       if (toHome === true) {
         return <Redirect to="/" />;
       }
-      // this.goBack();
     }
 
     return (
@@ -81,4 +81,4 @@ function mapStateToProps({ users }) {
   };
 }
 
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));
