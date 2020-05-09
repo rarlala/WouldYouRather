@@ -26,24 +26,14 @@ class Question extends Component {
               {text1} <strong>OR</strong> {text2}
             </p>
 
-            {hasAnswered ? (
-              this.props.authedUser === 'null' ? (
-                <Link to="/login">
-                  <button type="submit" className="view-poll">
-                    Answer
-                  </button>
-                </Link>
-              ) : (
-                <Link to={`/question/${id}`}>
-                  <button type="submit" className="view-poll">
-                    Answer
-                  </button>
-                </Link>
-              )
-            ) : this.props.authedUser === 'null' ? (
-              <Link to="/login">
+            {/* 로그인 여부에 따른 로그인화면으로 이동과 답변 여부에 따른 버튼 조건처리 */}
+
+            {this.props.authedUser === 'null' ? (
+              <Link to="/login"></Link>
+            ) : hasAnswered ? (
+              <Link to={`/question/${id}`}>
                 <button type="submit" className="view-poll">
-                  View Poll
+                  Answer
                 </button>
               </Link>
             ) : (
@@ -64,7 +54,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
   return {
     authedUser,
-    question: formatQuestion(question, users[question.author], authedUser)
+    question: formatQuestion(question, users[question.author], authedUser),
   };
 }
 
