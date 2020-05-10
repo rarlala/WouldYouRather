@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
 import { Tab } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
+    console.log('Dashboard authedUser', this.props.authedUser);
+
+    if (this.props.authedUser === null) {
+      return <Redirect to="/login" />;
+    }
+
     const panes = [
       {
         menuItem: 'Unanswered Questions',
@@ -50,6 +57,7 @@ class Dashboard extends Component {
 
 function mapStateToProps({ authedUser, questions }) {
   return {
+    authedUser,
     answeredList: Object.keys(questions)
       .filter(
         id =>
@@ -66,9 +74,5 @@ function mapStateToProps({ authedUser, questions }) {
       .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
   };
 }
-
-// hasAnswered:
-//       optionOne['votes'].includes(authedUser) ||
-//       optionTwo['votes'].includes(authedUser),
 
 export default connect(mapStateToProps)(Dashboard);

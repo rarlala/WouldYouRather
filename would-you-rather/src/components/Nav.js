@@ -10,51 +10,40 @@ class Nav extends Component {
       <nav className="nav">
         <ul>
           <li>
-            {authedUser !== 'null' ? (
+            {authedUser !== null ? (
               <NavLink to="/" activeClassName="active">
                 Home
               </NavLink>
             ) : (
-              <NavLink to="/login">Home</NavLink>
+              <span>Home</span>
             )}
-            {/* <NavLink to="/" activeClassName="active">
-              Home
-            </NavLink> */}
           </li>
           <li>
-            {authedUser !== 'null' ? (
+            {authedUser !== null ? (
               <NavLink to="/new" activeClassName="active">
                 New Question
               </NavLink>
             ) : (
-              <NavLink to="/login">New Question</NavLink>
+              <span>New Question</span>
             )}
-            {/* <NavLink to="/new" activeClassName="active">
-              New Question
-            </NavLink> */}
           </li>
           <li>
-            {authedUser !== 'null' ? (
+            {authedUser !== null ? (
               <NavLink to="/leaderBoard" activeClassName="active">
                 Leader Board
               </NavLink>
             ) : (
-              <NavLink to="/login">Leader Board</NavLink>
+              <span>Leader Board</span>
             )}
-            {/* <NavLink to="/leaderBoard" activeClassName="active">
-              Leader Board
-            </NavLink> */}
           </li>
+          <li>{authedUser !== null ? <span>Hello {authedUser}</span> : ''}</li>
           <li>
-            {authedUser !== 'null' ? <span>Hello {authedUser}</span> : ''}
-          </li>
-          <li>
-            {authedUser !== 'null' ? (
-              <NavLink to="/logout" activeClassName="active">
-                LogOut
-              </NavLink>
+            {authedUser !== null ? (
+              <NavLink to="/logout">LogOut</NavLink>
             ) : (
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/login" activeClassName="active">
+                Login
+              </NavLink>
             )}
           </li>
         </ul>

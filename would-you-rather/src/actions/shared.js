@@ -5,10 +5,10 @@ import { setAuthedUser } from '../actions/authedUser';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
 export function handleAuthedUser() {
-  let userId = 'null';
+  let userId = null;
 
   return dispatch => {
-    if (userId !== 'null') {
+    if (userId !== null) {
       handleInitialDate();
     }
     dispatch(setAuthedUser(userId));

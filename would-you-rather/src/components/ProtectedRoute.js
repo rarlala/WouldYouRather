@@ -8,17 +8,14 @@ const ProtectedRoute = ({
   path,
   ...rest
 }) => {
-  console.log('정보확인', { component: Component, authedUser, path, ...rest });
-  console.log('정보확인 path', { path });
-
   return (
     <Route
       {...rest}
-      render={props => {
-        return authedUser !== 'null' ? (
+      render={(props) => {
+        return authedUser !== null ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" props={path} />
+          <Redirect to="/login2" />
         );
       }}
     />
@@ -27,7 +24,7 @@ const ProtectedRoute = ({
 
 function mapStateToProps({ authedUser }) {
   return {
-    authedUser
+    authedUser,
   };
 }
 

@@ -9,6 +9,7 @@ import Nav from './Nav';
 import QuestionDetail from './QuestionDetail';
 import { LoadingBar } from 'react-redux-loading';
 import Login from './Login';
+import Login2 from './Login2';
 import Logout from './Logout';
 import PageNotFound from './PageNotFound';
 import ProtectedRoute from './ProtectedRoute';
@@ -26,9 +27,14 @@ class App extends Component {
           <LoadingBar />
           <div className="container">
             <Nav />
-            {console.log('authedUser:', this.props.authedUser)}
-            {console.log('authedUser null:', this.props.authedUser === 'null')}
-            {this.props.loading === true ? null : (
+            {this.props.loading === true && this.props.authedUser === null ? (
+              <Switch>
+                <Route path="/" exact component={Dashboard} />
+                <Route path="/login" component={Login} />
+                <Route path="/login2" component={Login2} />
+                <Route component={PageNotFound} />
+              </Switch>
+            ) : (
               <Switch>
                 <ProtectedRoute path="/" exact component={Dashboard} />
                 <ProtectedRoute path="/new" component={NewQuestion} />
@@ -38,8 +44,9 @@ class App extends Component {
                 />
                 <ProtectedRoute path="/leaderBoard" component={LeaderBoard} />
                 <Route path="/login" component={Login} />
+                <Route path="/login2" component={Login2} />
                 <Route path="/logout" component={Logout} />
-                <Route path="*" component={PageNotFound} />
+                <Route component={PageNotFound} />
               </Switch>
             )}
           </div>
