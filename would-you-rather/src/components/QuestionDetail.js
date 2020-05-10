@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import { formatQuestion } from '../utils/helpers';
 import { handleSaveAnswer } from '../actions/questions';
 import { handleSaveAnswerUser } from '../actions/users';
+import { Redirect } from 'react-router-dom';
 
 class QuestionDetail extends Component {
   state = {
-    answer: ''
+    answer: '',
   };
 
-  handleClick = e => {
+  handleClick = (e) => {
     this.setState({
-      answer: e.target.value
+      answer: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     console.log('submit complete');
 
@@ -27,10 +28,22 @@ class QuestionDetail extends Component {
   };
 
   render() {
-    const { question, answer } = this.props;
+    const { questions, question, answer } = this.props;
 
     if (question === null) {
       return <p>No Question</p>;
+    }
+
+    console.log('=====================');
+    // console.log(questions);
+    // console.log(question);
+    // console.log(question.id);
+    // console.log(questions[question.id]);
+    console.log('=====================');
+
+    if (questions === undefined) {
+      // return <div>error</div>;
+      return <Redirect to="/error" />;
     }
 
     const {
@@ -42,7 +55,7 @@ class QuestionDetail extends Component {
       text2,
       hasAnswered,
       voteOne,
-      voteTwo
+      voteTwo,
     } = question;
 
     const one_vote = optionOne.votes.length;
@@ -154,10 +167,15 @@ function mapStateToProps({ authedUser, users, questions }, props) {
   const { id } = props.match.params;
   const question = questions[id];
 
+  if (!question) {
+    return;
+  }
+
   return {
     id,
     authedUser,
-    question: formatQuestion(question, users[question.author], authedUser)
+    question: formatQuestion(question, users[question.author], authedUser),
+    questions,
   };
 }
 

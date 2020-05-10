@@ -12,6 +12,7 @@ import Login from './Login';
 import Login2 from './Login2';
 import Logout from './Logout';
 import PageNotFound from './PageNotFound';
+import PageNotFound2 from './PageNotFound2';
 import ProtectedRoute from './ProtectedRoute';
 
 class App extends Component {
@@ -46,6 +47,7 @@ class App extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/login2" component={Login2} />
                 <Route path="/logout" component={Logout} />
+                <Route path="/error" component={PageNotFound2} />
                 <Route component={PageNotFound} />
               </Switch>
             )}
@@ -59,7 +61,7 @@ class App extends Component {
 function mapStateToProps({ authedUser }) {
   return {
     loading: authedUser === null,
-    authedUser
+    authedUser,
   };
 }
 
